@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-white fixed w-full z-50">
+    <nav className="bg-white fixed w-full z-10 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Centered Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className=" space-x-8">
             <Link
               href="/product-page"
               className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
@@ -42,10 +42,10 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Contact Button */}
-          <div className="hidden md:block">
+          <div className=" md:block">
             <Link
               href="/contact"
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-300"
+              className="bg-orange-500 hover:bg-orange-600 text-black font-semibold py-2 px-6 rounded-md transition-colors duration-300"
             >
               Get in Touch
             </Link>
@@ -104,7 +104,7 @@ const MobileMenu: React.FC = () => {
         )}
       </button>
       {isOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-lg">
+        <div className="absolute top-16 left-0 w-full bg-white shadow-lg z-40">
           <div className="flex flex-col items-center space-y-4 py-4">
             <Link
               href="/product-page"
