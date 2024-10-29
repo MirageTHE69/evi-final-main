@@ -27,13 +27,6 @@ const Navbar: React.FC = () => {
             <div className="flex justify-center space-x-8">
               <Link
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                href="/about-us"
-                passHref
-              >
-                About Us
-              </Link>
-              <Link
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                 href="/product-page"
                 passHref
               >

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link"; // Import the Link component
 
 const TopSection: React.FC = () => {
   return (
@@ -8,13 +9,17 @@ const TopSection: React.FC = () => {
       <div className="flex space-x-16">
         {/* Rickshaw 1: Chhota Bull */}
         <div className="flex flex-col items-center">
-          <Image
-            src="/rick1.svg" // Replace with actual path to the image
-            alt="Chhota Bull"
-            width={300}
-            height={300}
-            className="mb-4"
-          />
+          <Link href="/product-page">
+            {" "}
+            {/* Link to product-page */}
+            <Image
+              src="/rick1.svg" // Replace with actual path to the image
+              alt="Chhota Bull"
+              width={300}
+              height={300}
+              className="mb-4 cursor-pointer" // Add cursor-pointer for better UX
+            />
+          </Link>
           <p className="text-center text-gray-700 font-semibold text-xl">
             Chhota Bull
           </p>
@@ -22,13 +27,17 @@ const TopSection: React.FC = () => {
 
         {/* Rickshaw 2: Chhota Otto */}
         <div className="flex flex-col items-center">
-          <Image
-            src="/rick2.svg" // Replace with actual path to the image
-            alt="Chhota Otto"
-            width={300}
-            height={300}
-            className="mb-4"
-          />
+          <Link href="/product-page2">
+            {" "}
+            {/* Link to product-page2 */}
+            <Image
+              src="/rick2.svg" // Replace with actual path to the image
+              alt="Chhota Otto"
+              width={300}
+              height={300}
+              className="mb-4 cursor-pointer" // Add cursor-pointer for better UX
+            />
+          </Link>
           <p className="text-center text-gray-700 font-semibold text-xl">
             Chhota Otto
           </p>
@@ -42,7 +51,7 @@ const TopSection: React.FC = () => {
           alt="Thunder Icon"
           width={600}
           height={600}
-          className="transform  rotate-12" // Rotate the icon by 45 degrees
+          className="transform rotate-12" // Rotate the icon by 45 degrees
         />
       </div>
     </div>

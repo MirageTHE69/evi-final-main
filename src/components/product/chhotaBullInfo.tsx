@@ -39,7 +39,7 @@ const WhyChhotaBull: React.FC = () => {
       {/* Left Section */}
       <div className="max-w-xl">
         <h2 className="text-3xl font-bold text-[#1B4572] mb-8 transition-transform transform hover:scale-105">
-          Why Chhota Bull?
+          Why Chhota otto?
         </h2>
 
         {/* Feature Cards */}
@@ -69,7 +69,7 @@ const WhyChhotaBull: React.FC = () => {
       <div className="w-1/2 flex justify-center">
         <div className="transform transition-transform duration-300 hover:scale-110 cursor-pointer">
           <Image
-            src="/rick1.svg" // Make sure this path is correct and points to the actual image
+            src="/rick2.svg" // Make sure this path is correct and points to the actual image
             alt="Chhota Bull Rickshaw"
             width={650}
             height={650}
