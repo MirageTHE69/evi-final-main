@@ -1,12 +1,10 @@
-"use client"; // Mark as client-side
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion"; // Import Framer Motion
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -17,7 +15,6 @@ const HeroSection: React.FC = () => {
 
   const headingText = "Power Up with E-Vi Electric 3 Vehicles";
 
-  // JSON data for description
   const descriptionData = [
     "Revolutionize urban transport with Chhota Otto, designed for comfort and efficiency.",
     "Ideal for city commuting, ensuring a smooth ride for every passenger.",
@@ -41,11 +38,12 @@ const HeroSection: React.FC = () => {
     }, 3000);
 
     return () => clearInterval(descInterval);
-  }, []);
+  }, [descriptionData]);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const ctx = gsap.context(() => {
-      // Thunder SVG Animation
       if (thunderRef.current) {
         gsap.to(thunderRef.current, {
           y: -20,
@@ -56,7 +54,6 @@ const HeroSection: React.FC = () => {
         });
       }
 
-      // Text Animation
       if (textRef.current) {
         gsap.from(textRef.current, {
           opacity: 0,
@@ -70,7 +67,6 @@ const HeroSection: React.FC = () => {
         });
       }
 
-      // Buttons Animation
       if (buttonsRef.current) {
         gsap.from(buttonsRef.current.children, {
           opacity: 0,
@@ -85,11 +81,10 @@ const HeroSection: React.FC = () => {
         });
       }
 
-      // Image Animation (fixed on the right side)
       if (imageRef.current) {
         gsap.from(imageRef.current, {
           opacity: 0,
-          x: 100, // Start from right
+          x: 100,
           duration: 1,
           ease: "power2.out",
         });
@@ -101,73 +96,69 @@ const HeroSection: React.FC = () => {
 
   return (
     <div
-      className="relative w-screen h-screen bg-white flex items-center px-16 overflow-hidden"
+      className="relative w-screen h-screen bg-white flex flex-col md:flex-row items-center px-8 md:px-16 overflow-hidden"
       ref={heroRef}
     >
-      {/* Thunder SVG in the background */}
-      <div className="absolute inset-y-0 right-0 w-1/2 h-full flex justify-end z-0">
-        <div className="relative w-full h-full" ref={thunderRef}>
+      <div className="absolute inset-y-0 right-0 w-full md:w-1/2 h-full flex justify-end z-0">
+        <div className="relative w-3/4 h-full" ref={thunderRef}>
           <Image
-            src="/thunderHero.svg" // Ensure your thunder SVG path
+            src="/thunderHero.svg"
             alt="Thunder Icon"
             layout="fill"
             objectFit="contain"
-            className="z-0"
           />
         </div>
       </div>
 
-      {/* Left Section - Text and Buttons */}
       <div
-        className="relative z-10 flex flex-col justify-center w-1/2"
+        className="relative z-10 flex flex-col justify-center w-full md:w-1/2"
         ref={textRef}
       >
-        <h1 className="text-5xl font-bold text-[#1B4572] mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
           {headingText.split("").map((char, index) => (
             <motion.span
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05, duration: 0.2 }}
             >
               {char}
             </motion.span>
           ))}
         </h1>
-        <p className="text-lg text-gray-600 mb-8 description-text">
+        <p className="text-base md:text-lg text-gray-700 mb-8 description-text">
           {currentDescription}
         </p>
         <div className="flex space-x-4" ref={buttonsRef}>
           <motion.button
-            className="px-6 py-3 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-500 transform transition-transform duration-300"
-            whileHover={{ scale: 1.05, backgroundColor: "#FFB84D" }} // Scale and change background color on hover
-            whileTap={{ scale: 0.95 }} // Scale down when pressed
-            transition={{ duration: 0.2 }} // Duration for the animation
+            className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transform transition-transform duration-300"
+            whileHover={{ scale: 1.05, backgroundColor: "#FFB84D" }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             Get in Touch
           </motion.button>
           <motion.button
             className="px-6 py-3 bg-gray-200 text-gray-900 font-semibold rounded-lg hover:bg-gray-300 transform transition-transform duration-300"
-            whileHover={{ scale: 1.05, backgroundColor: "#D1D5DB" }} // Scale and change background color on hover
-            whileTap={{ scale: 0.95 }} // Scale down when pressed
-            transition={{ duration: 0.2 }} // Duration for the animation
+            whileHover={{ scale: 1.05, backgroundColor: "#D1D5DB" }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
           >
             Book a Test Drive
           </motion.button>
         </div>
       </div>
 
-      {/* Right Section - Larger Rickshaw Image */}
       <motion.div
-        className="relative z-10 w-1/2 flex justify-end items-end"
+        className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end items-end"
         ref={imageRef}
-        initial={{ x: 100, opacity: 0 }} // Start from right off-screen
-        animate={{ x: 10, opacity: 5 }} // Move to original position
-        transition={{ duration: 3 }} // Duration for the animation
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.5 }}
       >
-        <div className="w-[600px] h-auto mr-20">
+        <div className="w-3/4 md:w-full h-auto">
           <Image
-            src="/rick1.svg" // Replace with your actual rickshaw image
+            src="/rick1.svg"
             alt="Chhota Otto"
             width={900}
             height={900}

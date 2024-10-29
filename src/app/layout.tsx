@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
+import SplashScreen from "@/components/splash-screen";
 
 const RubikFont = Rubik({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -15,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${RubikFont.className} antialiased`}>{children}</body>
+      <body className={`${RubikFont.className} antialiased`}>
+        <SplashScreen>{children}</SplashScreen>
+      </body>
     </html>
   );
 }

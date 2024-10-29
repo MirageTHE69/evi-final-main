@@ -6,62 +6,138 @@ import Image from "next/image";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-white shadow-xl mt-3">
+    <nav className="bg-white fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center flex-shrink-0">
-            <Link href="/" passHref>
-              <Image
-                src="/logo.svg" // Replace with your actual logo path
-                alt="Logo"
-                width={68} // Adjust width as needed
-                height={68} // Adjust height as needed
-                className="h-17 w-17"
-              />
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.svg" // Replace with your actual logo path
+              alt="Logo"
+              width={64} // Adjust width as needed
+              height={64} // Adjust height as needed
+              className="h-16 w-16 object-contain"
+            />
+          </Link>
+
+          {/* Centered Menu */}
+          <div className="hidden md:flex space-x-8">
+            <Link
+              href="/product-page"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
+            >
+              Products
+            </Link>
+            <Link
+              href="/blogs"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
+            >
+              Blogs
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
+            >
+              Policy
             </Link>
           </div>
 
-          {/* Centered Menu */}
-          <div className="flex-grow">
-            <div className="flex justify-center space-x-8">
-              <Link
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                href="/product-page"
-                passHref
-              >
-                Products
-              </Link>
-              <Link
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                href="/blogs"
-                passHref
-              >
-                Blogs
-              </Link>
-              <Link
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                href="/privacy"
-                passHref
-              >
-                Policy
-              </Link>
-            </div>
+          {/* Contact Button */}
+          <div className="hidden md:block">
+            <Link
+              href="/contact"
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-300"
+            >
+              Get in Touch
+            </Link>
           </div>
 
-          {/* Contact Button */}
-          <div>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <MobileMenu />
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+const MobileMenu: React.FC = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="text-gray-700 hover:text-orange-500 focus:outline-none focus:text-orange-500 transition-colors duration-300"
+        aria-label="Toggle menu"
+      >
+        {isOpen ? (
+          <svg
+            className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        ) : (
+          <svg
+            className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 8h16M4 16h16"
+            />
+          </svg>
+        )}
+      </button>
+      {isOpen && (
+        <div className="absolute top-16 left-0 w-full bg-white shadow-lg">
+          <div className="flex flex-col items-center space-y-4 py-4">
             <Link
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-md"
+              href="/product-page"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Products
+            </Link>
+            <Link
+              href="/blogs"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Blogs
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-gray-700 hover:text-orange-500 transition-colors duration-300 text-sm font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Policy
+            </Link>
+            <Link
               href="/contact"
-              passHref
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-300"
+              onClick={() => setIsOpen(false)}
             >
               Get in Touch
             </Link>
           </div>
         </div>
-      </div>
-    </nav>
+      )}
+    </>
   );
 };
 
