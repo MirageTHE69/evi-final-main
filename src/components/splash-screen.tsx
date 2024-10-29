@@ -14,7 +14,7 @@ export default function SplashScreen({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const splashDuration = 2000; // Duration in milliseconds (2 seconds)
+    const splashDuration = 10000; // Duration in milliseconds (2 seconds)
 
     const timer = setTimeout(() => {
       setIsLoading(false);
