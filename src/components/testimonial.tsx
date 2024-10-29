@@ -105,7 +105,7 @@ const TestimonialCarousel = () => {
                   {/* Right Side - Testimonial Content */}
                   <div className="w-full md:w-2/3 md:pl-8 text-center md:text-left">
                     <p className="text-lg text-gray-700 mb-4 italic">
-                      "{testimonial.quote}"
+                      &quot;{testimonial.quote}&quot;
                     </p>
                     <div className="flex items-center justify-center md:justify-start">
                       <span className="text-orange-500 mr-2">•</span>
