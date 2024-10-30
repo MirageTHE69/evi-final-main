@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Navbar from "../../components/nav";
 import Products from "@/components/productCard";
 import Products1 from "@/components/productCard2";
 import Info from "@/components/info";
