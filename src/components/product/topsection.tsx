@@ -4,7 +4,7 @@ import Link from "next/link"; // Import the Link component
 
 const TopSection: React.FC = () => {
   return (
-    <div className="min-h-screen w-screen flex justify-between items-center px-16 py-20 bg-white">
+    <div className="min-h-screen w-full flex justify-between items-center px-16 py-20 bg-white">
       {/* Left Section: Rickshaw Images */}
       <div className="flex space-x-16">
         {/* Rickshaw 1: Chhota Bull */}

@@ -66,7 +66,7 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <div className="w-screen bg-white py-8">
+    <div className="w-full bg-white py-8">
       <div className="max-w-6xl mx-auto p-8">
         <div className="flex flex-col md:flex-row">
           {/* Left Section */}

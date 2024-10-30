@@ -9,7 +9,7 @@ import FeatureSection2 from "@/components/product/featureSection3";
 
 const ProductPage: React.FC = () => {
   return (
-    <div className="min-h-screen w-screen">
+    <div className="min-h-screen w-full">
       <Navbar />
       <TopSection />
       <Product />
