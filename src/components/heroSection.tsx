@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const thunderRef = useRef<HTMLDivElement>(null);
 
-  const headingText = "Power Up with E-Vi Electric 3 Vehicles";
+  const headingText = "Power Up with E-Vi Electric Vehicles";
 
   const descriptionData = useMemo(
     () => [
@@ -99,42 +99,35 @@ const HeroSection: React.FC = () => {
 
   return (
     <div
-      className="relative w-screen h-screen bg-white flex flex-col md:flex-row items-center px-8 md:px-16 overflow-hidden"
+      className="relative w-full min-h-screen bg-white flex flex-col-reverse md:flex-row items-center justify-center md:justify-between px-4 sm:px-8 md:px-16 overflow-hidden mb-10 pt-20 md:pt-0"
       ref={heroRef}
     >
-      <div className="absolute inset-y-0 right-0 w-full md:w-1/2 h-full flex justify-end z-0">
-        <div className="relative w-3/4 h-full" ref={thunderRef}>
-          <Image
-            src="/thunderHero.svg"
-            alt="Thunder Icon"
-            layout="fill"
-            objectFit="contain"
-          />
-        </div>
-      </div>
-
+      {/* Text and Buttons Section */}
       <div
-        className="relative z-10 flex flex-col justify-center w-full md:w-1/2"
+        className="relative z-10 flex flex-col justify-center w-full md:w-1/2 mt-8 md:mt-0 text-center md:text-left"
         ref={textRef}
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-900 mb-4 leading-tight">
           {headingText.split("").map((char, index) => (
             <motion.span
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.2 }}
+              transition={{ delay: index * 0.03, duration: 0.2 }}
             >
               {char}
             </motion.span>
           ))}
         </h1>
-        <p className="text-base md:text-lg text-gray-700 mb-8 description-text">
+        <p className="text-base sm:text-lg text-gray-700 mb-8 description-text px-4 md:px-0">
           {currentDescription}
         </p>
-        <div className="flex space-x-4" ref={buttonsRef}>
+        <div
+          className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 items-center justify-center md:justify-start gap-5"
+          ref={buttonsRef}
+        >
           <motion.button
-            className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transform transition-transform duration-300"
+            className="px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transform transition-transform duration-300 w-48"
             whileHover={{ scale: 1.05, backgroundColor: "#FFB84D" }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -142,7 +135,7 @@ const HeroSection: React.FC = () => {
             Get in Touch
           </motion.button>
           <motion.button
-            className="px-6 py-3 bg-gray-200 text-gray-900 font-semibold rounded-lg hover:bg-gray-300 transform transition-transform duration-300"
+            className="px-6 py-3 bg-gray-200 text-gray-900 font-semibold rounded-lg hover:bg-gray-300 transform transition-transform duration-300 w-48"
             whileHover={{ scale: 1.05, backgroundColor: "#D1D5DB" }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -152,23 +145,38 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
+      {/* Image Section */}
       <motion.div
-        className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end items-end"
+        className="relative z-10 w-full md:w-1/2 flex justify-center items-center"
         ref={imageRef}
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        <div className="w-3/4 md:w-full h-auto">
+        <div className="w-full max-w-md md:max-w-full h-auto">
           <Image
             src="/rick1.svg"
             alt="Chhota Otto"
-            width={900}
-            height={900}
+            width={800}
+            height={800}
             className="object-contain"
+            priority
           />
         </div>
       </motion.div>
+
+      {/* Thunder Icon */}
+      <div className="absolute inset-y-0 right-0 w-full md:w-1/2 h-full flex justify-end z-0 pointer-events-none">
+        <div className="relative w-full h-full" ref={thunderRef}>
+          <Image
+            src="/thunderHero.svg"
+            alt="Thunder Icon"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-20 md:opacity-100"
+          />
+        </div>
+      </div>
     </div>
   );
 };
