@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,11 +15,14 @@ const HeroSection: React.FC = () => {
 
   const headingText = "Power Up with E-Vi Electric 3 Vehicles";
 
-  const descriptionData = [
-    "Revolutionize urban transport with Chhota Otto, designed for comfort and efficiency.",
-    "Ideal for city commuting, ensuring a smooth ride for every passenger.",
-    "Experience top-notch safety and eco-friendly transport solutions with Chhota Otto.",
-  ];
+  const descriptionData = useMemo(
+    () => [
+      "Revolutionize urban transport with Chhota Otto, designed for comfort and efficiency.",
+      "Ideal for city commuting, ensuring a smooth ride for every passenger.",
+      "Experience top-notch safety and eco-friendly transport solutions with Chhota Otto.",
+    ],
+    []
+  );
 
   const [currentDescription, setCurrentDescription] = useState(
     descriptionData[0]
