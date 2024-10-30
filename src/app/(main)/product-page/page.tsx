@@ -1,5 +1,4 @@
 import FeatureSection from "@/components/product/featureSection";
-import Navbar from "@/components/nav";
 import TopSection from "@/components/product/topsection";
 import Product from "@/components/productCard";
 import React from "react";

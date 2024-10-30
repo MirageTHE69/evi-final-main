@@ -1,12 +1,10 @@
 import React from "react";
-import Navbar from "@/components/nav"; // Assuming you have this already created
 import Footer from "@/components/footer"; // Assuming you have this already created
 
 const TermsOfUse: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
-      <Navbar />
 
       {/* Terms of Use Content */}
       <div className="max-w-7xl mx-auto py-16 px-8">
